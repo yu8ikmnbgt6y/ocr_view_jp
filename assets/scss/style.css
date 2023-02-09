@@ -1,0 +1,18 @@
+body {
+  background: white;
+;}/*# sourceMappingURL=style.css.map */
+
+h1{
+  text-align: center;
+}
+
+canvas{
+  border : thin dashed;
+  width: 800px;
+  height: 600px;
+  border-color: gray;
+}
+
+button{
+  max-width: 800px;
+}
