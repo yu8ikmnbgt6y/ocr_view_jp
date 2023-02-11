@@ -1,18 +1,23 @@
-body {
-  background: white;
-;}/*# sourceMappingURL=style.css.map */
-
-h1{
+h1 {
   text-align: center;
 }
 
-canvas{
-  border : thin dashed;
+body {
+  background: white;
+}
+body input {
+  max-width: 400px;
+  border: thin dashed;
+}
+body canvas {
+  background: white;
+  border: thin dashed;
   width: 800px;
   height: 600px;
-  border-color: gray;
 }
-
-button{
+body button {
   max-width: 800px;
 }
+body textarea {
+  width: 800px;
+}/*# sourceMappingURL=style.css.map */
