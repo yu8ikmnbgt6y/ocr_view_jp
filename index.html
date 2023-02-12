@@ -11,70 +11,95 @@
     <title>OCR View JP</title>
 </head>
 
+
 <body>
-    <h1>OCR View JP</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-10">
-                <div class="d-grid gap-2">
-                    <form id="image-upload-form" action="http://127.0.0.1:8080/ocr" method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <input type="file" id="image-file-input" class="file-upload" accept="image/*" name="image_data"/>
-                        </div>
-                        <div class="row">
-                            <canvas id="ocr_canvas"></canvas>
-                        </div>
-                        <!-- <button id="ocr_submit" class="btn btn-primary" type="button" disabled>submit</button> -->
-                        <div class="row">
-                            <input id="ocr_submit" type="submit" class="btn btn-primary" value="Submit" disabled>
-                            </button>
-                        </div>
-                    </form>
-                    <div>
-                        <textarea id="ocr_result_textarea" disabled>Output</textarea>
+    <header>
+        <h1>OCR View JP</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10">
+                    <div class="d-grid gap-2">
+                        <form id="image-upload-form" action="http://127.0.0.1:8080/ocr" method="post"
+                            enctype="multipart/form-data">
+                            <div class="row">
+                                <input type="file" id="image-file-input" class="file-upload" accept="image/*"
+                                    name="image_data" />
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                            <!-- <button id="ocr_submit" class="btn btn-primary" type="button" disabled>submit</button> -->
+                            <div class="row">
+                                <input id="ocr_submit" type="submit" class="btn btn-primary" value="Submit" disabled>
+                            </div>
+                        </form>                        
                     </div>
                 </div>
-            </div>
-            <div class="col-2">
-                <div class="d-grid gap-2">
-                    <div class="row">
-                        <div class="dropdown">
-                            <button id="ddMenu4ModelBtn" class="btn btn-secondary dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Select Model
-                            </button>
-                            <ul id="ddMenu4ModelList" class="dropdown-menu" aria-labelledby="ddMenu4Model">
-                                <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+                <div id="r_panel" class="col-2">
+                    <div id="control_panel" class="d-grid gap-2">
+                        <div class="row">
+                            <div class="dropdown">
+                                <button id="ddMenu4ModelBtn" class="btn btn-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Model
+                                </button>
+                                <ul id="ddMenu4ModelList" class="dropdown-menu" aria-labelledby="ddMenu4Model">
+                                    <!-- <li><a class="dropdown-item" href="#">Action</a></li>
                               <li><a class="dropdown-item" href="#">Another action</a></li>
                               <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="dropdown">
-                            <button id="ddMenu4LangBtn" class="btn btn-secondary dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false" disabled>
-                                Select Language
-                            </button>
-                            <ul id="ddMenu4LangList" class="dropdown-menu" aria-labelledby="ddMenu4Lang"></ul>
+                        <div class="row">
+                            <div class="dropdown">
+                                <button id="ddMenu4LangBtn" class="btn btn-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false" disabled>
+                                    Select Language
+                                </button>
+                                <ul id="ddMenu4LangList" class="dropdown-menu" aria-labelledby="ddMenu4Lang"></ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="dropdown">
-                            <button id="ddMenu4BuilderBtn" class="btn btn-secondary dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Select Builder
-                            </button>
-                            <ul id="ddMenu4BuilderList" class="dropdown-menu" aria-labelledby="ddMenu4Builder">
-                                <li class="dropdown-item active">word_box</li>
-                                <li class="dropdown-item">line_box</li>
-                            </ul>
+                        <div class="row">
+                            <div class="dropdown">
+                                <button id="ddMenu4BuilderBtn" class="btn btn-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Builder
+                                </button>
+                                <ul id="ddMenu4BuilderList" class="dropdown-menu" aria-labelledby="ddMenu4Builder">
+                                    <li class="dropdown-item active">word_box</li>
+                                    <li class="dropdown-item">line_box</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row"></div>
+            <div id="ocr_canvas_holder">
+                <canvas id="ocr_canvas"></canvas>
+                <div id="ocr_result_rect_list"></div>
+            </div>
+            <div>
+                <div id="alert_success" class="alert alert-success alert-dismissible fade show"
+                    role="alert">
+                    OCR succeed
+                    <button type="button" class="btn-close" onclick="hideAlert(this)"
+                        aria-label="Close"></button>
+                </div>
+                <div id="alert_failed" class="alert alert-danger alert-dismissible" role="alert">
+                    OCR failed
+                    <button type="button" class="btn-close" onclick="hideAlert(this)"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+            <div>                            
+                <textarea id="ocr_result_textarea" disabled>Output</textarea>
+            </div>
+        </main>
+        <footer>
+            <h4>a</h4>
+        </footer>
     </div>
 
 

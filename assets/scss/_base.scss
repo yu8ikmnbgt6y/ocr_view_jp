@@ -1,25 +1,61 @@
-h1{
-    text-align: center;
+html {
+    background-color: $tertiary;
+}
+
+.alert {
+    display: none;
+    // display: block
 }
 
 
-body{
-    input{
-        max-width: 800px;
-        border: thin dashed;
+body {
+    color: gray;
+    background-color: $tertiary;
+
+    header,
+    footer {
+        text-align: center;
+        background-color: black;
+        color: white;
     }
 
-    background: lighten($secondary, 60);
+    main {
+        #ocr_canvas_holder {
+            text-align: center;
 
-    canvas{
-        background: white;
-        border : thin dashed;
-        // width: 800px;
-        // height: 600px;    
-    }
-    
-    textarea{
-        width: 800px;
-    }
+            #ocr_canvas{
+                border: thin dotted;
+                background-color: lightgray;
+            }
 
+            .ocr_result_rect {
+                position: absolute;
+                border: thin solid;
+                border-color: $primary;
+            }
+
+            .ocr_result_string {
+                background-color: rgba(255, 0, 0, 0.8);
+                color: white;
+            }
+        }
+
+        .container {
+            background-color: $tertiary;
+        }
+
+        #image-file-input {
+            // max-width: 800px;
+            border: thin dashed;
+        }
+
+        textarea{
+            width: 800px;
+        }
+
+        #control_panel {
+            // padding-top: 100px;
+            background-color: lightgray;
+        }
+    }
 }

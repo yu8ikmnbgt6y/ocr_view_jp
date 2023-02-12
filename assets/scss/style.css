@@ -1,18 +1,46 @@
-h1 {
-  text-align: center;
+html {
+  background-color: #f8f9fa;
+}
+
+.alert {
+  display: none;
 }
 
 body {
-  background: white;
+  color: gray;
+  background-color: #f8f9fa;
 }
-body input {
-  max-width: 800px;
+body header,
+body footer {
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+body main #ocr_canvas_holder {
+  text-align: center;
+}
+body main #ocr_canvas_holder #ocr_canvas {
+  border: thin dotted;
+  background-color: lightgray;
+}
+body main #ocr_canvas_holder .ocr_result_rect {
+  position: absolute;
+  border: thin solid;
+  border-color: #2c3283;
+}
+body main #ocr_canvas_holder .ocr_result_string {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+}
+body main .container {
+  background-color: #f8f9fa;
+}
+body main #image-file-input {
   border: thin dashed;
 }
-body canvas {
-  background: white;
-  border: thin dashed;
-}
-body textarea {
+body main textarea {
   width: 800px;
+}
+body main #control_panel {
+  background-color: lightgray;
 }/*# sourceMappingURL=style.css.map */
