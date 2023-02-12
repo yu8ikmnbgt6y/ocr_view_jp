@@ -17,13 +17,21 @@
         <div class="row">
             <div class="col-xl-10">
                 <div class="d-grid gap-2">
-                    <input type="file" id="input-file-now" class="file-upload" />
-                    <canvas>
-
-                    </canvas>
-                    <button class="btn btn-primary" type="button">submit</button>
+                    <form id="image-upload-form" action="http://127.0.0.1:8080/ocr" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <input type="file" id="image-file-input" class="file-upload" accept="image/*" name="image_data"/>
+                        </div>
+                        <div class="row">
+                            <canvas id="ocr_canvas"></canvas>
+                        </div>
+                        <!-- <button id="ocr_submit" class="btn btn-primary" type="button" disabled>submit</button> -->
+                        <div class="row">
+                            <input id="ocr_submit" type="submit" class="btn btn-primary" value="Submit" disabled>
+                            </button>
+                        </div>
+                    </form>
                     <div>
-                        <textarea disabled>Output</textarea>
+                        <textarea id="ocr_result_textarea" disabled>Output</textarea>
                     </div>
                 </div>
             </div>
@@ -31,7 +39,7 @@
                 <div class="d-grid gap-2">
                     <div class="row">
                         <div class="dropdown">
-                            <button id="ddMenu4Model" class="btn btn-secondary dropdown-toggle" type="button"
+                            <button id="ddMenu4ModelBtn" class="btn btn-secondary dropdown-toggle" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Select Model
                             </button>
@@ -44,7 +52,7 @@
                     </div>
                     <div class="row">
                         <div class="dropdown">
-                            <button id="ddMenu4Lang" class="btn btn-secondary dropdown-toggle" type="button"
+                            <button id="ddMenu4LangBtn" class="btn btn-secondary dropdown-toggle" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false" disabled>
                                 Select Language
                             </button>
@@ -53,13 +61,13 @@
                     </div>
                     <div class="row">
                         <div class="dropdown">
-                            <button id="ddMenu4Bulder" class="btn btn-secondary dropdown-toggle" type="button"
+                            <button id="ddMenu4BuilderBtn" class="btn btn-secondary dropdown-toggle" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Select Builder
                             </button>
-                            <ul id="ddMenu4BulderList" class="dropdown-menu" aria-labelledby="ddMenu4Bulder">
-                                <li class="dropdown-item active"> WordBox </li>
-                                <li class="dropdown-item"> LineBox</li>
+                            <ul id="ddMenu4BuilderList" class="dropdown-menu" aria-labelledby="ddMenu4Builder">
+                                <li class="dropdown-item active">word_box</li>
+                                <li class="dropdown-item">line_box</li>
                             </ul>
                         </div>
                     </div>

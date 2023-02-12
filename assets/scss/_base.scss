@@ -5,7 +5,7 @@ h1{
 
 body{
     input{
-        max-width: 400px;
+        max-width: 800px;
         border: thin dashed;
     }
 
@@ -14,12 +14,8 @@ body{
     canvas{
         background: white;
         border : thin dashed;
-        width: 800px;
-        height: 600px;    
-    }
-    
-    button{
-        max-width: 800px;
+        // width: 800px;
+        // height: 600px;    
     }
     
     textarea{
