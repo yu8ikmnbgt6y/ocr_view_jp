@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  ocr_view:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8081:80"
+
+  ocr_api:
+    restart: always
+    build:
+      context: ./pyocr_api_jp
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "8080:8000"
+    environment:
+      VIRTUAL_HOST: ocr
