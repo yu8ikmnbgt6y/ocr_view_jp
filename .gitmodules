@@ -1,0 +1,3 @@
+[submodule "pyocr_api_jp"]
+	path = pyocr_api_jp
+	url = https://github.com/yu8ikmnbgt6y/pyocr_api_jp
