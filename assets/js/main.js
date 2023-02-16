@@ -95,7 +95,7 @@ async function initializeModelSelection(){
 }
 
 
-// 検出矩形の描画
+// 検出矩形の構造フォーマットを変更
 function shapeBoxes(api_boxes){
     let boxes = new Array()
 
@@ -163,6 +163,7 @@ window.onload = function () {
     
     image_file_input.addEventListener('change', function (ev) {
         if (ev.target.files.length == 0) {
+            ocr_submit.disabled = true
             return
         }
 

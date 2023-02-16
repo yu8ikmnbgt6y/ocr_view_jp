@@ -20,6 +20,8 @@ body main #ocr_canvas_holder {
   text-align: center;
 }
 body main #ocr_canvas_holder #ocr_canvas {
+  display: block;
+  margin: 0 auto;
   border: thin dotted;
   background-color: lightgray;
 }
@@ -39,6 +41,8 @@ body main #image-file-input {
   border: thin dashed;
 }
 body main textarea {
+  display: block;
+  margin: 0 auto;
   width: 800px;
 }
 body main #control_panel {
