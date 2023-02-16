@@ -24,10 +24,11 @@ body {
             text-align: center;
 
             #ocr_canvas{
+                display: block;
+                margin: 0 auto;
                 border: thin dotted;
                 background-color: lightgray;
             }
-
             .ocr_result_rect {
                 position: absolute;
                 border: thin solid;
@@ -50,6 +51,8 @@ body {
         }
 
         textarea{
+            display: block;
+            margin: 0 auto;
             width: 800px;
         }
 
