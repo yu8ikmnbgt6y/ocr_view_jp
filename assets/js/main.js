@@ -8,11 +8,31 @@ const ddMenu4ModelBtn = document.getElementById("ddMenu4ModelBtn");
 const ddMenu4ModelList = document.getElementById("ddMenu4ModelList");
 const ddMenu4LangBtn = document.getElementById('ddMenu4LangBtn');
 const ddMenu4LangList = document.getElementById('ddMenu4LangList');
+const ddMenu4BuilderBtn = document.getElementById('ddMenu4BuilderBtn');
+const ddMenu4BuilderList = document.getElementById('ddMenu4BuilderList');
 const ocr_submit = document.getElementById('ocr_submit');
 const alert_success = document.getElementById('alert_success')
 const alert_failed = document.getElementById('alert_failed')
 
-function initialize_main(){
+
+function setFirstSelection(){
+    ddMenu4ModelList.firstChild.dispatchEvent(new Event('click'))
+    ddMenu4BuilderList.firstChild.dispatchEvent(new Event('click'))
+}
+
+async function initMain(){
+    initCanvas();
+    initTextArea();
+    initImageFileInput();
+    initImageForm();
+
+    await initModelSelection(); // async
+    initBuilderSelection();
+
+    setFirstSelection();
+}
+
+function initCanvas(){
     // reset canvas
     mycanvas.resetCanvas()
 
@@ -34,7 +54,7 @@ async function getAvailableValues(api_url){
 async function initializeLanguageSelection(model_name){
     // clear all language selaction
     while (ddMenu4LangList.firstChild) {
-        ddMenu4LangList.removeChild(ddMenu4LangList.firstChild);
+        ddMenu4LangList.firstChild.remove();
     }
 
     const url = `${config.URL_OCR_API_AvailableLanguages}/${model_name}`
@@ -62,9 +82,13 @@ async function initializeLanguageSelection(model_name){
 
     // enable language selector
     ddMenu4LangBtn.removeAttribute('disabled')
+
+    if (ddMenu4LangList.firstChild){
+        ddMenu4LangList.firstChild.dispatchEvent(new Event('click'))
+    }
 }
 
-async function initializeModelSelection(){
+async function initModelSelection(){
     // clear all model selaction
     while (ddMenu4ModelList.firstChild) {
         ddMenu4ModelList.firstChild.remove();
@@ -143,24 +167,31 @@ window.addEventListener('resize', function(){
     mycanvas.adjustBoxes()
 })
 
-window.onload = function () {
-    initialize_main();
-    initializeModelSelection()
 
-    const ddMenu4BuilderBtn = document.getElementById('ddMenu4BuilderBtn');
-    const ddMenu4BuilderList = document.getElementById('ddMenu4BuilderList');
+function initBuilderSelection(){
 
-    for (const x of ddMenu4BuilderList.children) {
-        x.addEventListener('click', function () {
-            // clear active
-            for (const y of ddMenu4BuilderList.children) {
-                y.classList.remove('active')
-            }
-            x.classList.add('active')
-            ddMenu4BuilderBtn.textContent = `Selected Builder:${x.textContent}`
+    for (const builderElem of ddMenu4BuilderList.childNodes) {
+        builderElem.addEventListener('click', function () {
+            // clear active element
+            ddMenu4BuilderList.childNodes.forEach(x => 
+                x.classList.remove('active')
+            )
+            builderElem.classList.add('active')
+            ddMenu4BuilderBtn.textContent = `Selected Builder:${builderElem.textContent}`
         })
     };
-    
+
+}
+
+function initTextArea(){
+    ocr_result_textarea.addEventListener("input", function () {
+        // adjust textarea height based on string length
+        ocr_result_textarea.style.height = ""; // For a reliable reset, it is necessary
+        ocr_result_textarea.style.height = `${ocr_result_textarea.scrollHeight}px`
+    });
+}
+
+function initImageFileInput(){
     image_file_input.addEventListener('change', function (ev) {
         if (ev.target.files.length == 0) {
             ocr_submit.disabled = true
@@ -173,16 +204,12 @@ window.onload = function () {
             ocr_submit.removeAttribute('disabled')
         )
     });
+}
 
-    ocr_result_textarea.addEventListener("input", function (event) {
-        // adjust textarea height based on string length
-        ocr_result_textarea.style.height = ""; // For a reliable reset, it is necessary
-        ocr_result_textarea.style.height = `${ocr_result_textarea.scrollHeight}px`
-    });
-    
+
+function initImageForm(){
     const image_form = document.getElementById('image-upload-form')
 
-   
     async function sendImagetoOCR(){
         const formData = new FormData(image_form)
 
@@ -207,4 +234,9 @@ window.onload = function () {
         event.preventDefault();
         await sendImagetoOCR()
     });
+}
+
+
+window.onload = function () {
+    initMain(); 
 }
