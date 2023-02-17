@@ -1,5 +1,5 @@
 
-[usage](./docs/usage.gif)
+![usage](./docs/usage.gif)
 
 
 
